@@ -26,6 +26,13 @@
             "install-frameworkmissing.html",
             "install.php",
             "web.config"
+        ],
+        "expose": [
+            "themes/bootstrap/css",
+            "themes/bootstrap/javascript",
+            "themes/bootstrap/icons",
+            "themes/bootstrap/webfonts",
+            "themes/bootstrap/node_modules"
         ]
     },
     "config": {
