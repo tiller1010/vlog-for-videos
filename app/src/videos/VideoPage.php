@@ -7,7 +7,8 @@ use SilverStripe\Forms\GridField\GridFieldComponent;
 class VideoPage extends Page {
 	
 	private static $has_many = [
-		'VideoObjects' => VideoObject::class
+		'VideoObjects' => VideoObject::class,
+		'VideoComments' => VideoComment::class
 	];
 
 	public function getCMSFields(){

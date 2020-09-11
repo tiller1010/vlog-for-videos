@@ -6,6 +6,7 @@ use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\CheckboxsetField;
 
 class VideoObject extends DataObject {
 
@@ -19,6 +20,10 @@ class VideoObject extends DataObject {
 		'VideoPage' => VideoPage::class
 	];
 
+	private static $many_many = [
+		'VideoCategories' => VideoCategory::class
+	];
+
 	private static $owns = [
 		'VideoSource'
 	];
@@ -27,7 +32,8 @@ class VideoObject extends DataObject {
 		return new FieldList(
 			TextField::create('Title'),
 			TextareaField::create('Description'),
-			UploadField::create('VideoSource')
+			UploadField::create('VideoSource'),
+			CheckboxsetField::create('VideoCategories', 'Categories', VideoCategory::get())
 		);
 	}
 }
