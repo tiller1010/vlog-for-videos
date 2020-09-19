@@ -1,5 +1,5 @@
 <%-- NOTE: Before including this, you will need to wrap the include in a with block  --%>
-
+<% with $Results %>
 <% if $MoreThanOnePage %>
 	<ul class="pagination">
 		<% if $NotFirstPage %>
@@ -29,3 +29,4 @@
 		<% end_if %>
 	</ul>
 <% end_if %>
+<% end_with %>
