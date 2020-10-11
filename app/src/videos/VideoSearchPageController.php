@@ -7,6 +7,7 @@ use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\View\ArrayData;
 
@@ -31,6 +32,17 @@ class VideoSearchPageController extends PageController {
 			]);
 		}
 
+		if($search = $request->getVar('Category')){
+			$activeFilters->push(ArrayData::create([
+				'Category' => VideoCategory::get()->filter(['ID' => $search])->first()->Title
+			]));
+
+
+			$videos = $videos->filter([
+				'VideoCategories.ID' => $search
+			]);
+		}
+
 		$paginatedVideos = PaginatedList::create(
 			$videos,
 			$request
@@ -50,7 +62,9 @@ class VideoSearchPageController extends PageController {
 			'VideoSearchForm',
 			FieldList::create(
 				TextField::create('Keywords')
-					->setAttribute('placeholder', 'Search for a video')
+					->setAttribute('placeholder', 'Search for a video'),
+				DropdownField::create('Category', 'Category', VideoCategory::get()->map('ID', 'Title'))
+					->setEmptyString('Search in category')
 			),
 			FieldList::create(FormAction::create('doVideoSearch', 'Search'))
 		);
