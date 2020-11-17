@@ -13,7 +13,8 @@ class VideoObject extends DataObject {
 
 	private static $db = [
 		'Title' => 'Text',
-		'Description' => 'Text'
+		'Description' => 'Text',
+		'VideoExternalSource' => 'Text'
 	]; 
 	
 	private static $has_one = [
@@ -34,6 +35,7 @@ class VideoObject extends DataObject {
 	public function getCMSFields(){
 		return new FieldList(
 			TextField::create('Title'),
+			TextField::create('VideoExternalSource'),
 			TextareaField::create('Description'),
 			UploadField::create('VideoSource'),
 			UploadField::create('VideoThumbnail'),
