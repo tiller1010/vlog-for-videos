@@ -25,6 +25,8 @@ class VideoPageController extends PageController {
 			)
 		);
 
+		$form->enableSpamProtection();
+
 		return $form;
 	}
 

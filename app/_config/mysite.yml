@@ -3,3 +3,10 @@ Name: myproject
 ---
 SilverStripe\Core\Manifest\ModuleManifest:
   project: app
+
+SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
+  default_spam_protector: UndefinedOffset\NoCaptcha\Forms\NoCaptchaProtector
+
+UndefinedOffset\NoCaptcha\Forms\NoCaptchaField:
+  site_key: "6LerPAQaAAAAAFHchi9__kwjI6KG5g7Oa9heebHv"
+  secret_key: "6LerPAQaAAAAAK5TeeUym-h0N0DNB7QZiBQ8BZZh"
